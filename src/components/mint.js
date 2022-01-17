@@ -319,7 +319,7 @@ const Mint = (props) => {
               fontWeight: "400",
             }}
           >
-            {tokencount} remaining/0.5 Sol per SolPup
+            {tokencount} remaining/1000 UST per Square
           </Typography>
         </Typography>
         <Typography
@@ -398,9 +398,7 @@ const Mint = (props) => {
                   fontWeight: "bold",
                 }}
               >
-                <p style={{ color: "#fff" }}>
-                  PRE-SALE:{currentyear}/{month}/{date}
-                </p>
+                <p style={{ color: "#fff" }}>Limit 10 per wallet</p>
               </IconButton>
             </InputAdornment>
           </Typography>
@@ -420,6 +418,27 @@ const Mint = (props) => {
           >
             MINT NOW!!
           </Button>
+        </Typography>
+        <Typography
+          component="div"
+          width="60%"
+          display="inline-grid"
+          justifyContent="center"
+          textAlign="center"
+          sx={{ marginTop: "10px" }}
+        >
+          <Typography
+            component="p"
+            fontSize={{ sm: "10px", md: "13px", lg: "15px" }}
+            sx={{
+              color: "#FFF",
+              fontFamily: "Roboto",
+              fontWeight: "400",
+            }}
+          >
+            Each Square represents membership into the DAO and have a treasury
+            value of 0.1%
+          </Typography>
         </Typography>
         <NotificationContainer />
       </Container>

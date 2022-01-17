@@ -1,20 +1,11 @@
-import React, { useRef, useState, useEffect, useMemo } from "react";
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
+import React, { useState, useEffect } from "react";
+
 import Container from "@mui/material/Container";
 import "./mint.css";
 import { Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
-import Input from "@mui/material/Input";
-import FilledInput from "@mui/material/FilledInput";
-import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import InputAdornment from "@mui/material/InputAdornment";
-import FormHelperText from "@mui/material/FormHelperText";
-import FormControl from "@mui/material/FormControl";
-import TextField from "@mui/material/TextField";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Button from "@mui/material/Button";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import DoDisturbOnIcon from "@mui/icons-material/DoDisturbOn";
@@ -39,6 +30,11 @@ import {
   createLCDClient,
   useWallet,
   WalletStatus,
+  CreateTxFailed,
+  Timeout,
+  TxFailed,
+  TxUnspecifiedError,
+  UserDenied,
 } from "@terra-money/wallet-provider";
 import Alert from "@mui/material/Alert";
 import CheckIcon from "@mui/icons-material/Check";
@@ -188,40 +184,40 @@ const Mint = (props) => {
         })
         .catch((error) => {
           console.log(error);
-          if (error) {
-            setTxError(
-              "Unknown Error: " +
-                (error instanceof Error ? error.message : String(error))
-            );
-            NotificationManager.warning(error.message, "Warning", 3000);
+          // if (error) {
+          //   setTxError(
+          //     "Unknown Error: " +
+          //       (error instanceof Error ? error.message : String(error))
+          //   );
+          //   NotificationManager.warning(error.message, "Warning", 3000);
+          //   setDisablebutton(false);
+          // } else {
+          if (error instanceof UserDenied) {
+            setTxError("User Denied");
+            NotificationManager.warning(txError, "Warning", 3000);
             setDisablebutton(false);
-          } else {
-            if (error instanceof UserDenied) {
-              setTxError("User Denied");
-              NotificationManager.warning(txError, "Warning", 3000);
-              setDisablebutton(false);
-            }
-            if (error instanceof CreateTxFailed) {
-              setTxError("Create Tx Failed: " + error.message);
-              NotificationManager.warning(txError, "Warning", 3000);
-              setDisablebutton(false);
-            }
-            if (error instanceof TxFailed) {
-              setTxError("Tx Failed: " + error.message);
-              NotificationManager.warning(txError, "Warning", 3000);
-              setDisablebutton(false);
-            }
-            if (error instanceof Timeout) {
-              setTxError("Timeout");
-              NotificationManager.warning(txError, "Warning", 3000);
-              setDisablebutton(false);
-            }
-            if (error instanceof TxUnspecifiedError) {
-              setTxError("Unspecified Error: " + error.message);
-              NotificationManager.warning(txError, "Warning", 3000);
-              setDisablebutton(false);
-            }
           }
+          if (error instanceof CreateTxFailed) {
+            setTxError("Create Tx Failed: ");
+            NotificationManager.warning(txError, "Warning", 3000);
+            setDisablebutton(false);
+          }
+          if (error instanceof TxFailed) {
+            setTxError("Tx Failed: ");
+            NotificationManager.warning(txError, "Warning", 3000);
+            setDisablebutton(false);
+          }
+          if (error instanceof Timeout) {
+            setTxError("Timeout");
+            NotificationManager.warning(txError, "Warning", 3000);
+            setDisablebutton(false);
+          }
+          if (error instanceof TxUnspecifiedError) {
+            setTxError("Unspecified Error: ");
+            NotificationManager.warning(txError, "Warning", 3000);
+            setDisablebutton(false);
+          }
+          // }
         });
     }
   };

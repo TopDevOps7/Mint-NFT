@@ -9,6 +9,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Button from "@mui/material/Button";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import DoDisturbOnIcon from "@mui/icons-material/DoDisturbOn";
+import { Link } from "react-router-dom";
 
 import {
   LCDClient,
@@ -46,6 +47,14 @@ import {
   NotificationContainer,
   NotificationManager,
 } from "react-notifications";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import MenuIcon from "@mui/icons-material/Menu";
+import Avatar from "@mui/material/Avatar";
+import Logo from "../assets/logo.png";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import TwitterIcon from "@mui/icons-material/Twitter";
 const Mint = (props) => {
   const [values, setValues] = React.useState({
     password: "",
@@ -170,8 +179,6 @@ const Mint = (props) => {
               NotificationManager.error("Contract is out of tokens", "error");
               setDisablebutton(false);
               settokenCount(numtokens.count - allcount);
-              // localStorage.setItem("flag_count", true);
-              // localStorage.setItem("alltoken", numtokens.count - allcount);
             } else {
               if (nextTxResult.success == true) {
                 NotificationManager.success("Mint is Success", "Success");
@@ -184,14 +191,7 @@ const Mint = (props) => {
         })
         .catch((error) => {
           console.log(error);
-          // if (error) {
-          //   setTxError(
-          //     "Unknown Error: " +
-          //       (error instanceof Error ? error.message : String(error))
-          //   );
-          //   NotificationManager.warning(error.message, "Warning", 3000);
-          //   setDisablebutton(false);
-          // } else {
+
           if (error instanceof UserDenied) {
             setTxError("User Denied");
             NotificationManager.warning(txError, "Warning", 3000);
@@ -217,7 +217,6 @@ const Mint = (props) => {
             NotificationManager.warning(txError, "Warning", 3000);
             setDisablebutton(false);
           }
-          // }
         });
     }
   };
@@ -229,6 +228,93 @@ const Mint = (props) => {
   };
   return (
     <React.Fragment>
+      <Box
+        sx={{
+          flexGrow: 1,
+          marginLeft: "5%",
+          marginRight: "5%",
+        }}
+      >
+        <AppBar
+          position="static"
+          sx={{ backgroundColor: "#2C3764 !important" }}
+        >
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <Avatar alt="Remy Sharp" src={Logo} />
+            </IconButton>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "25px",
+                  fontFamily: "monospace",
+                  fontWeight: "bold",
+                }}
+                component="p"
+                mr={5}
+              >
+                SquaresDAO
+              </Typography>
+              <Typography variant="h6" component="div" mr={5}>
+                Home
+              </Typography>
+              <Typography variant="h6" component="div" mr={5}>
+                About
+              </Typography>
+              <Typography variant="h6" component="div" mr={5}>
+                NFT
+              </Typography>
+              <Typography variant="h6" component="div" mr={5}>
+                Treasury
+              </Typography>
+              <Typography variant="h6" component="div" mr={5}>
+                DAO
+              </Typography>
+              <Typography variant="h6" component="div" mr={5}>
+                Roadmap
+              </Typography>
+              <Typography variant="h6" component="div" mr={5}>
+                Fag
+              </Typography>
+            </Box>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2, cursor: "pointer" }}
+            >
+              <a style={{ color: "#FFF" }} href="https://www.telegram.com/">
+                <TelegramIcon sx={{ cursor: "pointer" }} />
+              </a>
+            </IconButton>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2, cursor: "pointer" }}
+            >
+              <a style={{ color: "#FFF" }} href="https://twitter.com/">
+                <TwitterIcon sx={{ cursor: "pointer" }} />
+              </a>
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+      </Box>
       <Container
         maxWidth="sm"
         sx={{
@@ -236,6 +322,7 @@ const Mint = (props) => {
           borderRadius: "20px",
           justifyContent: "center",
           padding: "50px",
+          marginTop: "5%",
           textAlign: "center",
           width: "100%",
         }}
@@ -432,8 +519,8 @@ const Mint = (props) => {
               fontWeight: "400",
             }}
           >
-            Each Square represents membership into the DAO and have a treasury
-            value of 0.1%
+            Each Square NFT represents an exclusive membership with the DAO and
+            also has a treasury value of 0.1%
           </Typography>
         </Typography>
         <NotificationContainer />

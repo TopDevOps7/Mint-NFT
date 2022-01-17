@@ -8,5 +8,7 @@ p.MuiTypography-root.MuiTypography-body1.minfontspan {
   width: 100% !important;
 }
 .box {
-  padding-top: 200px;
+  background: url("../assets/background.png") !important;
+  padding-top: 50px;
+  width: 100%;
 }

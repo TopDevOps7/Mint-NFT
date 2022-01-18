@@ -245,49 +245,85 @@ const Mint = (props) => {
               edge="start"
               color="inherit"
               aria-label="menu"
-              sx={{ mr: 2 }}
+              sx={{ mr: 2, display: "flex", alignItems: "center" }}
             >
               <Avatar alt="Remy Sharp" src={Logo} />
             </IconButton>
+            <Typography
+              sx={{
+                fontFamily: "monospace",
+                fontWeight: "bold",
+              }}
+              fontSize={{ sm: "20px", md: "27px", lg: "30px" }}
+              component="p"
+              mr={5}
+            >
+              SquaresDAO
+            </Typography>
             <Box
               sx={{
                 width: "100%",
                 display: "flex",
                 alignItems: "center",
+
                 justifyContent: "center",
               }}
             >
-              <Typography
-                sx={{
-                  fontSize: "25px",
-                  fontFamily: "monospace",
-                  fontWeight: "bold",
-                }}
-                component="p"
-                mr={5}
-              >
-                SquaresDAO
+              <Typography variant="h6" component="div" mr={5}>
+                <a
+                  style={{ color: "#FFF", textDecoration: "none" }}
+                  href="https://www.squaresdao.com/#Home"
+                >
+                  Home
+                </a>
               </Typography>
               <Typography variant="h6" component="div" mr={5}>
-                Home
+                <a
+                  style={{ color: "#FFF", textDecoration: "none" }}
+                  href="https://www.squaresdao.com/#About"
+                >
+                  About
+                </a>
               </Typography>
               <Typography variant="h6" component="div" mr={5}>
-                About
+                <a
+                  style={{ color: "#FFF", textDecoration: "none" }}
+                  href="https://www.squaresdao.com/#NFT"
+                >
+                  NFT
+                </a>
               </Typography>
               <Typography variant="h6" component="div" mr={5}>
-                NFT
+                <a
+                  style={{ color: "#FFF", textDecoration: "none" }}
+                  href="https://www.squaresdao.com/#Treasury"
+                >
+                  Treasury
+                </a>
               </Typography>
               <Typography variant="h6" component="div" mr={5}>
-                Treasury
+                <a
+                  style={{ color: "#FFF", textDecoration: "none" }}
+                  href="https://www.squaresdao.com/#DAO"
+                >
+                  DAO
+                </a>
               </Typography>
               <Typography variant="h6" component="div" mr={5}>
-                DAO
+                <a
+                  style={{ color: "#FFF", textDecoration: "none" }}
+                  href="https://www.squaresdao.com/#Roadmap"
+                >
+                  Roadmap
+                </a>
               </Typography>
               <Typography variant="h6" component="div" mr={5}>
-                Roadmap
-              </Typography>
-              <Typography variant="h6" component="div" mr={5}>
-                Fag
+                <a
+                  style={{ color: "#FFF", textDecoration: "none" }}
+                  href="https://www.squaresdao.com/#FAQ"
+                >
+                  FAQ
+                </a>
               </Typography>
             </Box>
             <IconButton
@@ -297,7 +333,10 @@ const Mint = (props) => {
               aria-label="menu"
               sx={{ mr: 2, cursor: "pointer" }}
             >
-              <a style={{ color: "#FFF" }} href="https://www.telegram.com/">
+              <a
+                style={{ color: "#FFF" }}
+                href="https://t.me/+AEQHNYliAT00N2Jh"
+              >
                 <TelegramIcon sx={{ cursor: "pointer" }} />
               </a>
             </IconButton>
@@ -308,7 +347,10 @@ const Mint = (props) => {
               aria-label="menu"
               sx={{ mr: 2, cursor: "pointer" }}
             >
-              <a style={{ color: "#FFF" }} href="https://twitter.com/">
+              <a
+                style={{ color: "#FFF" }}
+                href="https://twitter.com/SquaresDAO"
+              >
                 <TwitterIcon sx={{ cursor: "pointer" }} />
               </a>
             </IconButton>
